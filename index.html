@@ -69,7 +69,7 @@
 
     var xhr = new XMLHttpRequest();
 
-    var calles = new L.LayerGroup();
+    var callesPractica = new L.LayerGroup();
 
     xhr.open("GET","callesPractica.geojson",false);
     xhr.send(null);
@@ -107,7 +107,7 @@
       }                
   }
 
-    var restaurants = new L.LayerGroup();
+    var restaurantesPractica = new L.LayerGroup();
     xhr.open("GET","restaurantesPractica.geojson",false);
     xhr.send(null);
     var data1 = JSON.parse(xhr.responseText);
@@ -141,7 +141,7 @@
         }
     }
 
-    var rios = new L.LayerGroup();
+    var riosPractica = new L.LayerGroup();
     xhr.open("GET","riosPractica.geojson",false);
     xhr.send(null);
     var data3 = JSON.parse(xhr.responseText);
@@ -191,7 +191,7 @@
         }                
     }
 
-    var edificios = new L.LayerGroup();
+    var edificiosPractica = new L.LayerGroup();
     xhr.open("GET","edificiosPractica.geojson",false);
     xhr.send(null);
     var data2 = JSON.parse(xhr.responseText);
