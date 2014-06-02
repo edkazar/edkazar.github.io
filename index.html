@@ -89,17 +89,17 @@
                 
       var i;
       for (i = 0; i < data2.features.length; i++) {
-          polygon[i].setStyle({color: 'blue'});
+          polygon[i].setStyle({color: 'red'});
       }
       for (i = 0; i < data3.features.length; i++) {
-          linesRios[i].setStyle({color:'blue'});
+          linesRios[i].setStyle({color:'red'});
       }
       for (i = 0; i < data1.features.length; i++) {
           marker[i].setIcon(MarcadorRest);
       }
       for (i = 0; i < data.features.length; i++) {
           if(i == this.options.idName){
-              lines[this.options.idName].setStyle({color: 'red'});
+              lines[this.options.idName].setStyle({color: 'blue'});
           }else{
               lines[i].setStyle({color:'#000'});
           }
@@ -125,10 +125,10 @@
            lines[i].setStyle({color:'#000'});
         }
         for (i = 0; i < data2.features.length; i++) {
-            polygon[i].setStyle({color: 'blue'});
+            polygon[i].setStyle({color: 'red'});
         }
         for (i = 0; i < data3.features.length; i++) {
-            linesRios[i].setStyle({color:'blue'});
+            linesRios[i].setStyle({color:'red'});
         }
         for (i = 0; i < data1.features.length; i++) {
             if(i == this.options.idRestaurante){
@@ -172,7 +172,7 @@
         var i;
         
         for (i = 0; i < data2.features.length; i++) {
-            polygon[i].setStyle({color: 'blue'});
+            polygon[i].setStyle({color: 'red'});
         }
         for (i = 0; i < data.features.length; i++) {
            lines[i].setStyle({color:'#000'});
@@ -182,9 +182,9 @@
         }
         for (i = 0; i < data3.features.length; i++) {
             if(i == this.options.idNameRio){
-                linesRios[this.options.idNameRio].setStyle({color: 'red'});
+                linesRios[this.options.idNameRio].setStyle({color: 'blue'});
             }else{
-                linesRios[i].setStyle({color:'blue'});
+                linesRios[i].setStyle({color:'red'});
             }
         }                
     }
@@ -219,16 +219,16 @@
         }
 
         for (i = 0; i < data3.features.length; i++) {
-            linesRios[i].setStyle({color:'blue'});
+            linesRios[i].setStyle({color:'red'});
         }
         for (i = 0; i < data1.features.length; i++) {
             marker[i].setIcon(MarcadorRest);
         }
         for (i = 0; i < data2.features.length; i++) {
             if(i == this.options.idNamePolygon){
-                polygon[this.options.idNamePolygon].setStyle({color: 'red'});
+                polygon[this.options.idNamePolygon].setStyle({color: 'blue'});
             }else{
-                polygon[i].setStyle({color:'blue'});
+                polygon[i].setStyle({color:'red'});
             }
         }
     }
@@ -257,13 +257,13 @@
            lines[i].setStyle({color:'#000'});
         }
         for (i = 0; i < data3.features.length; i++) {
-            linesRios[i].setStyle({color:'blue'});
+            linesRios[i].setStyle({color:'red'});
         }
         for (i = 0; i < data1.features.length; i++) {
             marker[i].setIcon(MarcadorRest);
         }
         for (i = 0; i < data2.features.length; i++) {
-          polygon[i].setStyle({color:'blue'});
+          polygon[i].setStyle({color:'red'});
         }
     }
 
