@@ -64,8 +64,8 @@
 
   <script type="text/javascript">
 
-    var redMarker = L.AwesomeMarkers.icon({icon: "tags",color: "blue",iconColor: "black"});
-    var redMarker1 = L.AwesomeMarkers.icon({icon: "food",color: "green",iconColor: "black"});
+    var MarcadorRest = L.AwesomeMarkers.icon({icon: "tags",color: "blue",iconColor: "black"});
+    var MarcadorActivo = L.AwesomeMarkers.icon({icon: "food",color: "green",iconColor: "black"});
 
     var xhr = new XMLHttpRequest();
 
@@ -95,7 +95,7 @@
           linesRios[i].setStyle({color:'blue'});
       }
       for (i = 0; i < data1.features.length; i++) {
-          marker[i].setIcon(redMarker);
+          marker[i].setIcon(MarcadorRest);
       }
       for (i = 0; i < data.features.length; i++) {
           if(i == this.options.idName){
@@ -115,7 +115,7 @@
     for (i = 0; i < data1.features.length; i++) {
       marker[i] = new L.marker([data1.features[i].geometry.coordinates[1], data1.features[i].geometry.coordinates[0]], {
         idRestaurante: i,
-        icon: redMarker
+        icon: MarcadorRest
       }).addTo(restaurantesPractica).bindPopup(data1.features[i].properties.Nombre).on('click', onClick);
     };
 
@@ -132,10 +132,10 @@
         }
         for (i = 0; i < data1.features.length; i++) {
             if(i == this.options.idRestaurante){
-                marker[this.options.idRestaurante].setIcon(redMarker1);
+                marker[this.options.idRestaurante].setIcon(MarcadorActivo);
                 
             }else{
-                marker[i].setIcon(redMarker);
+                marker[i].setIcon(MarcadorRest);
             }
         }
     }
@@ -179,7 +179,7 @@
            lines[i].setStyle({color:'#000'});
         }
         for (i = 0; i < data1.features.length; i++) {
-            marker[i].setIcon(redMarker);
+            marker[i].setIcon(MarcadorRest);
         }
         for (i = 0; i < data3.features.length; i++) {
             if(i == this.options.idNameRio){
@@ -223,7 +223,7 @@
             linesRios[i].setStyle({color:'blue'});
         }
         for (i = 0; i < data1.features.length; i++) {
-            marker[i].setIcon(redMarker);
+            marker[i].setIcon(MarcadorRest);
         }
         for (i = 0; i < data2.features.length; i++) {
             if(i == this.options.idNamePolygon){
@@ -261,7 +261,7 @@
             linesRios[i].setStyle({color:'blue'});
         }
         for (i = 0; i < data1.features.length; i++) {
-            marker[i].setIcon(redMarker);
+            marker[i].setIcon(MarcadorRest);
         }
         for (i = 0; i < data2.features.length; i++) {
           polygon[i].setStyle({color:'blue'});
