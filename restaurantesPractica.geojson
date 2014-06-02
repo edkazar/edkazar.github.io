@@ -19,5 +19,7 @@
 { "type": "Feature", "properties": { "Nombre": "McDonalds" }, "geometry": { "type": "Point", "coordinates": [ -84.078153156995228, 9.93493873278878 ] } },
 
 { "type": "Feature", "properties": { "Nombre": "Pizza Hut" }, "geometry": { "type": "Point", "coordinates": [ -84.078773983296259, 9.935747440733541 ] } }
+
 ]
+
 }

@@ -26,6 +26,9 @@
 { "type": "Feature", "properties": { "Nombre": "CalleCentral", "Adelante": 5, "Atras": 50, "Velocidad": 25, "Largo": 400 }, "geometry": { "type": "LineString", "coordinates": [ [ -84.080105492336628, 9.932365571146358 ], [ -84.079770572884755, 9.935894478541679 ] ] } },
 
 { "type": "Feature", "properties": { "Nombre": "Calle2", "Adelante": 5, "Atras": 50, "Velocidad": 25, "Largo": 400 }, "geometry": { "type": "LineString", "coordinates": [ [ -84.080644630966461, 9.935951659911511 ], [ -84.08090603151426, 9.932406414981951 ] ] } },
+
 { "type": "Feature", "properties": { "Nombre": "Calle4", "Adelante": 5, "Atras": 50, "Velocidad": 25, "Largo": 400 }, "geometry": { "type": "LineString", "coordinates": [ [ -84.081755583294623, 9.932496271420259 ], [ -84.081453338911217, 9.936057853884055 ] ] } }
+
 ]
+
 }
