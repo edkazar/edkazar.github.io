@@ -65,7 +65,7 @@
   <script type="text/javascript">
 
     var MarcadorRest= L.AwesomeMarkers.icon({icon: "tags",color: "blue",iconColor: "purple"});
-    var MarcadorActivo = L.AwesomeMarkers.icon({icon: "food",color: "green",iconColor: "yellow"});
+    var MarcadorActivo = L.AwesomeMarkers.icon({icon: "food",color: "green",iconColor: "purple"});
 
     var xhr = new XMLHttpRequest();
 
@@ -166,10 +166,10 @@
       marker[i] = new L.marker([data1.features[i].geometry.coordinates[1], data1.features[i].geometry.coordinates[0]], {
         idRestaurante: i,
         icon: MarcadorRest
-      }).addTo(restaurantesPractica).bindPopup(data1.features[i].properties.Nombre).on('click', Presionar);
+      }).addTo(restaurantesPractica).bindPopup(data1.features[i].properties.Nombre).on('click', onClick);
     };
 
-    function Presionar(e) {
+    function onClick(e) {
         var i;
         for (i = 0; i < data.features.length; i++) {
            lines[i].setStyle({color:'#000'});
