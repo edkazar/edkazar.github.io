@@ -92,14 +92,14 @@
           polygon[i].setStyle({color: 'red'});
       }
       for (i = 0; i < data3.features.length; i++) {
-          linesRios[i].setStyle({color:'red'});
+          linesRios[i].setStyle({color:'blue'});
       }
       for (i = 0; i < data1.features.length; i++) {
           marker[i].setIcon(MarcadorRest);
       }
       for (i = 0; i < data.features.length; i++) {
           if(i == this.options.idName){
-              lines[this.options.idName].setStyle({color: 'blue'});
+              lines[this.options.idName].setStyle({color: 'green'});
           }else{
               lines[i].setStyle({color:'#000'});
           }
@@ -116,10 +116,10 @@
       marker[i] = new L.marker([data1.features[i].geometry.coordinates[1], data1.features[i].geometry.coordinates[0]], {
         idRestaurante: i,
         icon: MarcadorRest
-      }).addTo(restaurantesPractica).bindPopup(data1.features[i].properties.Nombre).on('click', onClick);
+      }).addTo(restaurantesPractica).bindPopup(data1.features[i].properties.Nombre).on('click', setColorEtiqueta);
     };
 
-    function onClick(e) {
+    function setColorEtiqueta(e) {
         var i;
         for (i = 0; i < data.features.length; i++) {
            lines[i].setStyle({color:'#000'});
@@ -128,7 +128,7 @@
             polygon[i].setStyle({color: 'red'});
         }
         for (i = 0; i < data3.features.length; i++) {
-            linesRios[i].setStyle({color:'red'});
+            linesRios[i].setStyle({color:'blue'});
         }
         for (i = 0; i < data1.features.length; i++) {
             if(i == this.options.idRestaurante){
@@ -182,9 +182,9 @@
         }
         for (i = 0; i < data3.features.length; i++) {
             if(i == this.options.idNameRio){
-                linesRios[this.options.idNameRio].setStyle({color: 'blue'});
+                linesRios[this.options.idNameRio].setStyle({color: 'green'});
             }else{
-                linesRios[i].setStyle({color:'red'});
+                linesRios[i].setStyle({color:'blue'});
             }
         }                
     }
@@ -212,21 +212,20 @@
     };
 
     function setColorPolygon(e) {
-        //alert(""+this.options.idName);
         var i;
         for (i = 0; i < data.features.length; i++) {
            lines[i].setStyle({color:'#000'});
         }
 
         for (i = 0; i < data3.features.length; i++) {
-            linesRios[i].setStyle({color:'red'});
+            linesRios[i].setStyle({color:'blue'});
         }
         for (i = 0; i < data1.features.length; i++) {
             marker[i].setIcon(MarcadorRest);
         }
         for (i = 0; i < data2.features.length; i++) {
             if(i == this.options.idNamePolygon){
-                polygon[this.options.idNamePolygon].setStyle({color: 'blue'});
+                polygon[this.options.idNamePolygon].setStyle({color: 'green'});
             }else{
                 polygon[i].setStyle({color:'red'});
             }
@@ -257,7 +256,7 @@
            lines[i].setStyle({color:'#000'});
         }
         for (i = 0; i < data3.features.length; i++) {
-            linesRios[i].setStyle({color:'red'});
+            linesRios[i].setStyle({color:'blue'});
         }
         for (i = 0; i < data1.features.length; i++) {
             marker[i].setIcon(MarcadorRest);
