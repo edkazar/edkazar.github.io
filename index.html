@@ -64,60 +64,10 @@
 
   <script type="text/javascript">
 
-    var MarcadorRest= L.AwesomeMarkers.icon({icon: "tags",color: "blue",iconColor: "purple"});
-    var MarcadorActivo = L.AwesomeMarkers.icon({icon: "food",color: "green",iconColor: "purple"});
+    var MarcadorRest= L.AwesomeMarkers.icon({icon: "tags",color: "blue",iconColor: "black"});
+    var MarcadorActivo = L.AwesomeMarkers.icon({icon: "food",color: "green",iconColor: "black"});
 
     var xhr = new XMLHttpRequest();
-
-    var riosPractica = new L.LayerGroup();
-    xhr.open("GET","riosPractica.geojson",false);
-    xhr.send(null);
-    var data3 = JSON.parse(xhr.responseText);
-
-    var linesRios = [];
-    var i;
-    for (i = 0; i < data3.features.length; i++) {
-
-        // Create array of lat,lon points
-        var line_pointsRios = [
-            [data3.features[i].geometry.coordinates[0][1], data.features[i].geometry.coordinates[0][0]],
-            [data3.features[i].geometry.coordinates[1][1], data.features[i].geometry.coordinates[1][0]]];
-
-        var line_pointsRios = new Array(data3.features[i].geometry.coordinates.length);
-        var j;
-        for (j = 0; j < data3.features[i].geometry.coordinates.length; j++) {
-            line_pointsRios[j] = new Array(2);
-            
-            line_pointsRios[j][0] = data3.features[i].geometry.coordinates[j][1];
-            line_pointsRios[j][1] = data3.features[i].geometry.coordinates[j][0];
-            
-        }
-
-        linesRios[i] = new L.polyline(line_pointsRios, {color: 'blue',weight: 10,idNameRio: i});
-        linesRios[i].addTo(riosPractica).bindPopup(data3.features[i].properties.Rio).on('click', ColorRios);
-    };
-
-
-    function ColorRios(e) {
-        var i;
-        
-        for (i = 0; i < data2.features.length; i++) {
-            polygon[i].setStyle({color: 'blue'});
-        }
-        for (i = 0; i < data.features.length; i++) {
-           lines[i].setStyle({color:'#000'});
-        }
-        for (i = 0; i < data1.features.length; i++) {
-            marker[i].setIcon(MarcadorRest);
-        }
-        for (i = 0; i < data3.features.length; i++) {
-            if(i == this.options.idNameRio){
-                linesRios[this.options.idNameRio].setStyle({color: 'red'});
-            }else{
-                linesRios[i].setStyle({color:'blue'});
-            }
-        }                
-    }
 
     var callesPractica = new L.LayerGroup();
     xhr.open("GET","callesPractica.geojson",false);
@@ -132,10 +82,10 @@
         [data.features[i].geometry.coordinates[0][1], data.features[i].geometry.coordinates[0][0]],
         [data.features[i].geometry.coordinates[1][1], data.features[i].geometry.coordinates[1][0]]];
 
-      lines[i] = new L.polyline(line_points, {color: '#000', weight: 10, idName: i}).bindPopup(data.features[i].properties.Nombre).addTo(callesPractica).on('click', PintarCalles);
+      lines[i] = new L.polyline(line_points, {color: '#000', weight: 10, idName: i}).bindPopup(data.features[i].properties.Nombre).addTo(callesPractica).on('click', setColorCalles);
     };
 
-    function PintarCalles(e) {
+    function setColorCalles(e) {
                 
       var i;
       for (i = 0; i < data2.features.length; i++) {
@@ -190,6 +140,56 @@
         }
     }
 
+    var riosPractica = new L.LayerGroup();
+    xhr.open("GET","riosPractica.geojson",false);
+    xhr.send(null);
+    var data3 = JSON.parse(xhr.responseText);
+
+    var linesRios = [];
+    var i;
+    for (i = 0; i < data3.features.length; i++) {
+
+        // Create array of lat,lon points
+        var line_pointsRios = [
+            [data3.features[i].geometry.coordinates[0][1], data.features[i].geometry.coordinates[0][0]],
+            [data3.features[i].geometry.coordinates[1][1], data.features[i].geometry.coordinates[1][0]]];
+
+        var line_pointsRios = new Array(data3.features[i].geometry.coordinates.length);
+        var j;
+        for (j = 0; j < data3.features[i].geometry.coordinates.length; j++) {
+            line_pointsRios[j] = new Array(2);
+            
+            line_pointsRios[j][0] = data3.features[i].geometry.coordinates[j][1];
+            line_pointsRios[j][1] = data3.features[i].geometry.coordinates[j][0];
+            
+        }
+
+        linesRios[i] = new L.polyline(line_pointsRios, {color: 'blue',weight: 10,idNameRio: i});
+        linesRios[i].addTo(riosPractica).bindPopup(data3.features[i].properties.Rio).on('click', setColorRios);
+    };
+
+
+    function ColorRios(e) {
+        var i;
+        
+        for (i = 0; i < data2.features.length; i++) {
+            polygon[i].setStyle({color: 'blue'});
+        }
+        for (i = 0; i < data.features.length; i++) {
+           lines[i].setStyle({color:'#000'});
+        }
+        for (i = 0; i < data1.features.length; i++) {
+            marker[i].setIcon(MarcadorRest);
+        }
+        for (i = 0; i < data3.features.length; i++) {
+            if(i == this.options.idNameRio){
+                linesRios[this.options.idNameRio].setStyle({color: 'red'});
+            }else{
+                linesRios[i].setStyle({color:'blue'});
+            }
+        }                
+    }
+
     var edificiosPractica = new L.LayerGroup();
     xhr.open("GET","edificiosPractica.geojson",false);
     xhr.send(null);
@@ -209,10 +209,10 @@
         polygon[i] = new L.polygon(polygonData, {color: 'blue',idNamePolygon: i });
         polygon[i].addTo(edificiosPractica);
         polygon[i].bindPopup(data2.features[i].properties.Edificio);
-        polygon[i].on('click', PintarPoligono);
+        polygon[i].on('click', setColorPoligono);
     };
 
-    function PintarPoligono(e) {
+    function setColorPoligono(e) {
         //alert(""+this.options.idName);
         var i;
         for (i = 0; i < data.features.length; i++) {
