@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Practica 12 - Sergio González Q.</title>
+  <title>Sistemas de Informacion Geografica: Practica 12</title>
   <meta charset=utf-8 />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
@@ -71,7 +71,7 @@
 
     var calles = new L.LayerGroup();
 
-    xhr.open("GET","calles.geojson",false);
+    xhr.open("GET","callesPractica.geojson",false);
     xhr.send(null);
     var data = JSON.parse(xhr.responseText);
 
@@ -83,7 +83,7 @@
         [data.features[i].geometry.coordinates[0][1], data.features[i].geometry.coordinates[0][0]],
         [data.features[i].geometry.coordinates[1][1], data.features[i].geometry.coordinates[1][0]]];
 
-      lines[i] = new L.polyline(line_points, {color: '#000', weight: 10, idName: i}).bindPopup(data.features[i].properties.Nombre).addTo(calles).on('click', setColor);
+      lines[i] = new L.polyline(line_points, {color: '#000', weight: 10, idName: i}).bindPopup(data.features[i].properties.Nombre).addTo(callesPractica).on('click', setColor);
     };
 
     function setColor(e) {
@@ -108,7 +108,7 @@
   }
 
     var restaurants = new L.LayerGroup();
-    xhr.open("GET","restaurantes.geojson",false);
+    xhr.open("GET","restaurantesPractica.geojson",false);
     xhr.send(null);
     var data1 = JSON.parse(xhr.responseText);
     var marker = [];
@@ -117,7 +117,7 @@
       marker[i] = new L.marker([data1.features[i].geometry.coordinates[1], data1.features[i].geometry.coordinates[0]], {
         idRestaurante: i,
         icon: redMarker
-      }).addTo(restaurants).bindPopup(data1.features[i].properties.Nombre).on('click', onClick);
+      }).addTo(restaurantesPractica).bindPopup(data1.features[i].properties.Nombre).on('click', onClick);
     };
 
     function onClick(e) {
@@ -142,7 +142,7 @@
     }
 
     var rios = new L.LayerGroup();
-    xhr.open("GET","rios.geojson",false);
+    xhr.open("GET","riosPractica.geojson",false);
     xhr.send(null);
     var data3 = JSON.parse(xhr.responseText);
 
@@ -166,7 +166,7 @@
         }
 
         linesRios[i] = new L.polyline(line_pointsRios, {color: 'blue',weight: 10,idNameRio: i});
-        linesRios[i].addTo(rios).bindPopup(data3.features[i].properties.Nombre).on('click', setColorRios);
+        linesRios[i].addTo(riosPractica).bindPopup(data3.features[i].properties.Rio).on('click', setColorRios);
     };
 
 
@@ -192,7 +192,7 @@
     }
 
     var edificios = new L.LayerGroup();
-    xhr.open("GET","edificios.geojson",false);
+    xhr.open("GET","edificiosPractica.geojson",false);
     xhr.send(null);
     var data2 = JSON.parse(xhr.responseText);
 
@@ -208,8 +208,8 @@
         }
         
         polygon[i] = new L.polygon(polygonData, {color: 'blue',idNamePolygon: i });
-        polygon[i].addTo(edificios);
-        polygon[i].bindPopup(data2.features[i].properties.Nombre);
+        polygon[i].addTo(edificiosPractica);
+        polygon[i].bindPopup(data2.features[i].properties.Edificio);
         polygon[i].on('click', setColorPolygon);
     };
 
@@ -236,17 +236,17 @@
     }
 
 
-    var map = L.map('map', {center: [9.959049309716555,-84.085599659843965], zoom: 17, layers: [restaurants, calles, rios, edificios]});
+    var map = L.map('map', {center: [9.959049309716555,-84.085599659843965], zoom: 17, layers: [restaurantesPractica, callesPractica, riosPractica, edificiosPractica]});
     
     // add an OpenStreetMap tile layer
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
 
     // Overlay layers are grouped
     var groupedOverlays = {
-      "Calles": calles,
-      "Restaurants": restaurants,
-      "Edificios": edificios,
-      "Rios": rios
+      "Calles": callesPractica,
+      "Restaurantes": restaurantesPractica,
+      "Edificios": edificiosPractica,
+      "Rios": riosPractica
     };
     
     L.control.layers(null, groupedOverlays).addTo(map);
