@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Sistemas de Informacion Geografica: Practica 12</title>
@@ -64,82 +64,10 @@
 
   <script type="text/javascript">
 
-    var redMarker = L.AwesomeMarkers.icon({icon: "flag",color: "red",iconColor: "purple"});
-    var redMarker1 = L.AwesomeMarkers.icon({icon: "tags",color: "blue",iconColor: "yellow"});
+    var MarcadorRest= L.AwesomeMarkers.icon({icon: "tags",color: "blue",iconColor: "purple"});
+    var MarcadorActivo = L.AwesomeMarkers.icon({icon: "food",color: "green",iconColor: "yellow"});
 
     var xhr = new XMLHttpRequest();
-
-    var callesPractica = new L.LayerGroup();
-
-    xhr.open("GET","callesPractica.geojson",false);
-    xhr.send(null);
-    var data = JSON.parse(xhr.responseText);
-
-    var lines = [];
-    var i;
-    for (i = 0; i < data.features.length; i++) {
-      // Create array of lat,lon points
-      var line_points = [
-        [data.features[i].geometry.coordinates[0][1], data.features[i].geometry.coordinates[0][0]],
-        [data.features[i].geometry.coordinates[1][1], data.features[i].geometry.coordinates[1][0]]];
-
-      lines[i] = new L.polyline(line_points, {color: '#000', weight: 10, idName: i}).bindPopup(data.features[i].properties.Nombre).addTo(callesPractica).on('click', setColor);
-    };
-
-    function setColor(e) {
-                
-      var i;
-      for (i = 0; i < data2.features.length; i++) {
-          polygon[i].setStyle({color: 'blue'});
-      }
-      for (i = 0; i < data3.features.length; i++) {
-          linesRios[i].setStyle({color:'blue'});
-      }
-      for (i = 0; i < data1.features.length; i++) {
-          marker[i].setIcon(redMarker);
-      }
-      for (i = 0; i < data.features.length; i++) {
-          if(i == this.options.idName){
-              lines[this.options.idName].setStyle({color: 'red'});
-          }else{
-              lines[i].setStyle({color:'#000'});
-          }
-      }                
-  }
-
-    var restaurantesPractica = new L.LayerGroup();
-    xhr.open("GET","restaurantesPractica.geojson",false);
-    xhr.send(null);
-    var data1 = JSON.parse(xhr.responseText);
-    var marker = [];
-    var i;
-    for (i = 0; i < data1.features.length; i++) {
-      marker[i] = new L.marker([data1.features[i].geometry.coordinates[1], data1.features[i].geometry.coordinates[0]], {
-        idRestaurante: i,
-        icon: redMarker
-      }).addTo(restaurantesPractica).bindPopup(data1.features[i].properties.Nombre).on('click', onClick);
-    };
-
-    function onClick(e) {
-        var i;
-        for (i = 0; i < data.features.length; i++) {
-           lines[i].setStyle({color:'#000'});
-        }
-        for (i = 0; i < data2.features.length; i++) {
-            polygon[i].setStyle({color: 'blue'});
-        }
-        for (i = 0; i < data3.features.length; i++) {
-            linesRios[i].setStyle({color:'blue'});
-        }
-        for (i = 0; i < data1.features.length; i++) {
-            if(i == this.options.idRestaurante){
-                marker[this.options.idRestaurante].setIcon(redMarker1);
-                
-            }else{
-                marker[i].setIcon(redMarker);
-            }
-        }
-    }
 
     var riosPractica = new L.LayerGroup();
     xhr.open("GET","riosPractica.geojson",false);
@@ -166,11 +94,11 @@
         }
 
         linesRios[i] = new L.polyline(line_pointsRios, {color: 'blue',weight: 10,idNameRio: i});
-        linesRios[i].addTo(riosPractica).bindPopup(data3.features[i].properties.Rio).on('click', setColorRios);
+        linesRios[i].addTo(riosPractica).bindPopup(data3.features[i].properties.Rio).on('click', ColorRios);
     };
 
 
-    function setColorRios(e) {
+    function ColorRios(e) {
         var i;
         
         for (i = 0; i < data2.features.length; i++) {
@@ -180,7 +108,7 @@
            lines[i].setStyle({color:'#000'});
         }
         for (i = 0; i < data1.features.length; i++) {
-            marker[i].setIcon(redMarker);
+            marker[i].setIcon(MarcadorRest);
         }
         for (i = 0; i < data3.features.length; i++) {
             if(i == this.options.idNameRio){
@@ -189,6 +117,77 @@
                 linesRios[i].setStyle({color:'blue'});
             }
         }                
+    }
+
+    var callesPractica = new L.LayerGroup();
+    xhr.open("GET","callesPractica.geojson",false);
+    xhr.send(null);
+    var data = JSON.parse(xhr.responseText);
+
+    var lines = [];
+    var i;
+    for (i = 0; i < data.features.length; i++) {
+      // Create array of lat,lon points
+      var line_points = [
+        [data.features[i].geometry.coordinates[0][1], data.features[i].geometry.coordinates[0][0]],
+        [data.features[i].geometry.coordinates[1][1], data.features[i].geometry.coordinates[1][0]]];
+
+      lines[i] = new L.polyline(line_points, {color: '#000', weight: 10, idName: i}).bindPopup(data.features[i].properties.Nombre).addTo(callesPractica).on('click', PintarCalles);
+    };
+
+    function PintarCalles(e) {
+                
+      var i;
+      for (i = 0; i < data2.features.length; i++) {
+          polygon[i].setStyle({color: 'blue'});
+      }
+      for (i = 0; i < data3.features.length; i++) {
+          linesRios[i].setStyle({color:'blue'});
+      }
+      for (i = 0; i < data1.features.length; i++) {
+          marker[i].setIcon(MarcadorRest);
+      }
+      for (i = 0; i < data.features.length; i++) {
+          if(i == this.options.idName){
+              lines[this.options.idName].setStyle({color: 'red'});
+          }else{
+              lines[i].setStyle({color:'#000'});
+          }
+      }                
+  }
+
+    var restaurantesPractica = new L.LayerGroup();
+    xhr.open("GET","restaurantesPractica.geojson",false);
+    xhr.send(null);
+    var data1 = JSON.parse(xhr.responseText);
+    var marker = [];
+    var i;
+    for (i = 0; i < data1.features.length; i++) {
+      marker[i] = new L.marker([data1.features[i].geometry.coordinates[1], data1.features[i].geometry.coordinates[0]], {
+        idRestaurante: i,
+        icon: MarcadorRest
+      }).addTo(restaurantesPractica).bindPopup(data1.features[i].properties.Nombre).on('click', Presionar);
+    };
+
+    function Presionar(e) {
+        var i;
+        for (i = 0; i < data.features.length; i++) {
+           lines[i].setStyle({color:'#000'});
+        }
+        for (i = 0; i < data2.features.length; i++) {
+            polygon[i].setStyle({color: 'blue'});
+        }
+        for (i = 0; i < data3.features.length; i++) {
+            linesRios[i].setStyle({color:'blue'});
+        }
+        for (i = 0; i < data1.features.length; i++) {
+            if(i == this.options.idRestaurante){
+                marker[this.options.idRestaurante].setIcon(MarcadorActivo);
+                
+            }else{
+                marker[i].setIcon(MarcadorRest);
+            }
+        }
     }
 
     var edificiosPractica = new L.LayerGroup();
@@ -210,10 +209,10 @@
         polygon[i] = new L.polygon(polygonData, {color: 'blue',idNamePolygon: i });
         polygon[i].addTo(edificiosPractica);
         polygon[i].bindPopup(data2.features[i].properties.Edificio);
-        polygon[i].on('click', setColorPolygon);
+        polygon[i].on('click', PintarPoligono);
     };
 
-    function setColorPolygon(e) {
+    function PintarPoligono(e) {
         //alert(""+this.options.idName);
         var i;
         for (i = 0; i < data.features.length; i++) {
@@ -224,7 +223,7 @@
             linesRios[i].setStyle({color:'blue'});
         }
         for (i = 0; i < data1.features.length; i++) {
-            marker[i].setIcon(redMarker);
+            marker[i].setIcon(MarcadorRest);
         }
         for (i = 0; i < data2.features.length; i++) {
             if(i == this.options.idNamePolygon){
@@ -236,17 +235,17 @@
     }
 
 
-    var map = L.map('map', {center: [9.93404,-84.07956], zoom: 17, layers: [restaurantesPractica, callesPractica, riosPractica, edificiosPractica]});
+    var map = L.map('map', {center: [9.93404,-84.07956], zoom: 17, layers: [riosPractica, callesPractica, edificiosPractica, restaurantesPractica]});
     
     // add an OpenStreetMap tile layer
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
 
     // Overlay layers are grouped
     var groupedOverlays = {
+      "Rios": riosPractica,
       "Calles": callesPractica,
-      "Restaurantes": restaurantesPractica,
       "Edificios": edificiosPractica,
-      "Rios": riosPractica
+      "Restaurantes": restaurantesPractica
     };
     
     L.control.layers(null, groupedOverlays).addTo(map);
@@ -262,7 +261,7 @@
             linesRios[i].setStyle({color:'blue'});
         }
         for (i = 0; i < data1.features.length; i++) {
-            marker[i].setIcon(redMarker);
+            marker[i].setIcon(MarcadorRest);
         }
         for (i = 0; i < data2.features.length; i++) {
           polygon[i].setStyle({color:'blue'});
