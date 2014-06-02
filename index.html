@@ -69,56 +69,7 @@
 
     var xhr = new XMLHttpRequest();
 
-    var riosPractica = new L.LayerGroup();
-    xhr.open("GET","riosPractica.geojson",false);
-    xhr.send(null);
-    var data3 = JSON.parse(xhr.responseText);
-
-    var linesRios = [];
-    var i;
-    for (i = 0; i < data3.features.length; i++) {
-
-        // Create array of lat,lon points
-        var line_pointsRios = [
-            [data3.features[i].geometry.coordinates[0][1], data.features[i].geometry.coordinates[0][0]],
-            [data3.features[i].geometry.coordinates[1][1], data.features[i].geometry.coordinates[1][0]]];
-
-        var line_pointsRios = new Array(data3.features[i].geometry.coordinates.length);
-        var j;
-        for (j = 0; j < data3.features[i].geometry.coordinates.length; j++) {
-            line_pointsRios[j] = new Array(2);
-            
-            line_pointsRios[j][0] = data3.features[i].geometry.coordinates[j][1];
-            line_pointsRios[j][1] = data3.features[i].geometry.coordinates[j][0];
-            
-        }
-
-        linesRios[i] = new L.polyline(line_pointsRios, {color: 'blue',weight: 10,idNameRio: i});
-        linesRios[i].addTo(riosPractica).bindPopup(data3.features[i].properties.Rio).on('click', setColorRios);
-    };
-
-    function setColorRios(e) {
-        var i;
-        
-        for (i = 0; i < data2.features.length; i++) {
-            polygon[i].setStyle({color: 'blue'});
-        }
-        for (i = 0; i < data.features.length; i++) {
-           lines[i].setStyle({color:'#000'});
-        }
-        for (i = 0; i < data1.features.length; i++) {
-            marker[i].setIcon(MarcadorRest);
-        }
-        for (i = 0; i < data3.features.length; i++) {
-            if(i == this.options.idNameRio){
-                linesRios[this.options.idNameRio].setStyle({color: 'red'});
-            }else{
-                linesRios[i].setStyle({color:'blue'});
-            }
-        }                
-    }
-
-var callesPractica = new L.LayerGroup();
+    var callesPractica = new L.LayerGroup();
     xhr.open("GET","callesPractica.geojson",false);
     xhr.send(null);
     var data = JSON.parse(xhr.responseText);
@@ -187,6 +138,55 @@ var callesPractica = new L.LayerGroup();
                 marker[i].setIcon(MarcadorRest);
             }
         }
+    }
+
+    var riosPractica = new L.LayerGroup();
+    xhr.open("GET","riosPractica.geojson",false);
+    xhr.send(null);
+    var data3 = JSON.parse(xhr.responseText);
+
+    var linesRios = [];
+    var i;
+    for (i = 0; i < data3.features.length; i++) {
+
+        // Create array of lat,lon points
+        var line_pointsRios = [
+            [data3.features[i].geometry.coordinates[0][1], data.features[i].geometry.coordinates[0][0]],
+            [data3.features[i].geometry.coordinates[1][1], data.features[i].geometry.coordinates[1][0]]];
+
+        var line_pointsRios = new Array(data3.features[i].geometry.coordinates.length);
+        var j;
+        for (j = 0; j < data3.features[i].geometry.coordinates.length; j++) {
+            line_pointsRios[j] = new Array(2);
+            
+            line_pointsRios[j][0] = data3.features[i].geometry.coordinates[j][1];
+            line_pointsRios[j][1] = data3.features[i].geometry.coordinates[j][0];
+            
+        }
+
+        linesRios[i] = new L.polyline(line_pointsRios, {color: 'blue',weight: 10,idNameRio: i});
+        linesRios[i].addTo(riosPractica).bindPopup(data3.features[i].properties.Rio).on('click', setColorRios);
+    };
+
+    function setColorRios(e) {
+        var i;
+        
+        for (i = 0; i < data2.features.length; i++) {
+            polygon[i].setStyle({color: 'blue'});
+        }
+        for (i = 0; i < data.features.length; i++) {
+           lines[i].setStyle({color:'#000'});
+        }
+        for (i = 0; i < data1.features.length; i++) {
+            marker[i].setIcon(MarcadorRest);
+        }
+        for (i = 0; i < data3.features.length; i++) {
+            if(i == this.options.idNameRio){
+                linesRios[this.options.idNameRio].setStyle({color: 'red'});
+            }else{
+                linesRios[i].setStyle({color:'blue'});
+            }
+        }                
     }
 
     var edificiosPractica = new L.LayerGroup();
