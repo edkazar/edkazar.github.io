@@ -85,7 +85,7 @@
             polygonData[j][1] = datosBancos.features[i].geometry.coordinates[0][j][0];
         }
         
-        polygon[i] = new L.polygon(polygonData, {color: 'blue',idNamePolygon: i });
+        polygon[i] = new L.polygon(polygonData, {color: 'red',idNamePolygon: i });
         polygon[i].addTo(Bancos);
         polygon[i].bindPopup(datosBancos.features[i].properties.Name);
         polygon[i].on('click', setColorBancos);
