@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Name": "Financiera Desyfin", "TipoDeServ": "Financiera" }, "geometry": { "type": "Point", "coordinates": [ -84.05172, 9.939805, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BAC", "TipoDeServ": "Financiera" }, "geometry": { "type": "Point", "coordinates": [ -84.055561, 9.939444, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Banco Hipotecario de la Vivienda", "TipoDeServ": "Financiera" }, "geometry": { "type": "Point", "coordinates": [ -84.057434, 9.937178, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Bansol", "TipoDeServ": "Financiera" }, "geometry": { "type": "Point", "coordinates": [ -84.055925, 9.934883, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BAC San Jose", "TipoDeServ": "Financiera" }, "geometry": { "type": "Point", "coordinates": [ -84.05693, 9.934435, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "CONAPE", "TipoDeServ": "Financiera" }, "geometry": { "type": "Point", "coordinates": [ -84.055148, 9.933265, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Scotiabank", "TipoDeServ": "Financiera" }, "geometry": { "type": "Point", "coordinates": [ -84.049162, 9.931638, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Davivienda", "TipoDeServ": "Financiera" }, "geometry": { "type": "Point", "coordinates": [ -84.04873, 9.932577, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "FUNDES", "TipoDeServ": "Financiera" }, "geometry": { "type": "Point", "coordinates": [ -84.046086, 9.939754, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Banco Lafise", "TipoDeServ": "Financiera" }, "geometry": { "type": "Point", "coordinates": [ -84.054653, 9.932387, 0.0 ] } }
+]
+}

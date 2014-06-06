@@ -1,0 +1,27 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Name": "Farmacia el Cristo", "TipoDeServ": "Farmacia" }, "geometry": { "type": "Point", "coordinates": [ -84.023700356483459, 9.943626557216913, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Ebais San Rafael", "TipoDeServ": "Ebais" }, "geometry": { "type": "Point", "coordinates": [ -84.019998908042908, 9.943542015855005, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Farmacia Sucre", "TipoDeServ": "Farmacia" }, "geometry": { "type": "Point", "coordinates": [ -84.035823941230774, 9.944170791710546, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Farmacia Chavarria", "TipoDeServ": "Farmacia" }, "geometry": { "type": "Point", "coordinates": [ -84.043226838111877, 9.942025551461933, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Farmacia La Paulina", "TipoDeServ": "Farmacia" }, "geometry": { "type": "Point", "coordinates": [ -84.04990017414093, 9.940836680728701, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Clinica de Especialidades Dental Dr Paris", "TipoDeServ": "Clinica" }, "geometry": { "type": "Point", "coordinates": [ -84.032852053642273, 9.932123447296675, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Farmacia Monterrey", "TipoDeServ": "Farmacia" }, "geometry": { "type": "Point", "coordinates": [ -84.033656716346741, 9.93839023535153, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Clinica Dentra Dra Vanessa Morales", "TipoDeServ": "Clinica" }, "geometry": { "type": "Point", "coordinates": [ -84.043189287185669, 9.930374431901981, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Ebais calle Tururun", "TipoDeServ": "Ebais" }, "geometry": { "type": "Point", "coordinates": [ -84.049933, 9.930455, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Ebais San Pedro", "TipoDeServ": "Ebais" }, "geometry": { "type": "Point", "coordinates": [ -84.039971, 9.931966, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Ebais Vargas Aralla", "TipoDeServ": "Ebais" }, "geometry": { "type": "Point", "coordinates": [ -84.034799, 9.941048, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Farmacia Fishel", "TipoDeServ": "Farmacia" }, "geometry": { "type": "Point", "coordinates": [ -84.05387, 9.931886, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Farmacia Chavarría", "TipoDeServ": "Framacia" }, "geometry": { "type": "Point", "coordinates": [ -84.051746, 9.931928, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Farmacia El Cristo", "TipoDeServ": "Farmacia" }, "geometry": { "type": "Point", "coordinates": [ -84.023703, 9.943637, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "EBAIS", "TipoDeServ": "Ebais" }, "geometry": { "type": "Point", "coordinates": [ -84.039971, 9.931966, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Ebais", "TipoDeServ": "Ebais" }, "geometry": { "type": "Point", "coordinates": [ -84.02001, 9.943549, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Clínica Odent", "TipoDeServ": "Clinica" }, "geometry": { "type": "Point", "coordinates": [ -84.04978, 9.931612, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Clínica Victoria", "TipoDeServ": "Clinica" }, "geometry": { "type": "Point", "coordinates": [ -84.045378, 9.932334, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Clinica Los Yoses", "TipoDeServ": "Clinica" }, "geometry": { "type": "Point", "coordinates": [ -84.060718, 9.929273, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Clinica de San Pedro", "TipoDeServ": "Clinica" }, "geometry": { "type": "Point", "coordinates": [ -84.052294427645279, 9.93290337559198, 0.0 ] } }
+]
+}

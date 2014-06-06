@@ -1,0 +1,16 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Name": "Gimnasio del Este", "TipoDeServ": "Gimnasio" }, "geometry": { "type": "Point", "coordinates": [ -84.04175, 9.943378, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Gimnasio Jivo", "TipoDeServ": "Gimnasio" }, "geometry": { "type": "Point", "coordinates": [ -84.049368, 9.940116, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "U Gym", "TipoDeServ": "Gimnasio" }, "geometry": { "type": "Point", "coordinates": [ -84.040574, 9.932964, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Gimnasio Artes Marciales y Pesas", "TipoDeServ": "Gimnasio" }, "geometry": { "type": "Point", "coordinates": [ -84.045434, 9.94307, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Cancha Sintética de Cedros", "TipoDeServ": "Cancha" }, "geometry": { "type": "Point", "coordinates": [ -84.027378, 9.940826, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "MMA Costa Rica", "TipoDeServ": "Academia" }, "geometry": { "type": "Point", "coordinates": [ -84.049969, 9.933203, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Triton Multi Sport", "TipoDeServ": "Gimnasio" }, "geometry": { "type": "Point", "coordinates": [ -84.047184, 9.938897, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Relson Gracie Academia de Jiu-Jitsu", "TipoDeServ": "Academia" }, "geometry": { "type": "Point", "coordinates": [ -84.050158, 9.932229, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Gimnasio Curves", "TipoDeServ": "Gimnasio" }, "geometry": { "type": "Point", "coordinates": [ -84.049830436706543, 9.941048035841723, 0.0 ] } }
+]
+}
