@@ -93,9 +93,9 @@
 
     function setColorBancos(e) {
         var i;
-        for (i = 0; i < datosBufferRios.features.length; i++) {
-          polygonBufferRios[i].setStyle({color: 'blue'});
-        }
+        //for (i = 0; i < datosBufferRios.features.length; i++) {
+        //  polygonBufferRios[i].setStyle({color: 'blue'});
+       // }
         for (i = 0; i < datosBancos.features.length; i++) {
             if(i == this.options.idNamePolygon){
                 polygonBancos[this.options.idNamePolygon].setStyle({color: 'green'});
@@ -155,9 +155,9 @@
 
     function reset(e){
       var i;
-       for (i = 0; i < datosBufferRios.features.length; i++) {
-            linesRios[i].setStyle({color:'blue'});
-        }
+      // for (i = 0; i < datosBufferRios.features.length; i++) {
+      //      linesRios[i].setStyle({color:'blue'});
+      //  }
         for (i = 0; i < datosBancos.features.length; i++) {
           polygon[i].setStyle({color:'red'});
         }
