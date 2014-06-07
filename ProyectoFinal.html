@@ -97,7 +97,7 @@
         //  polygonBufferRios[i].setStyle({color: 'blue'});
        // }
         for (i = 0; i < datosBusesTelefono.features.length; i++) {
-          puntosdatosBusesTelefono[i].setIcon(MarcadorBusTel);
+          puntosBusesTelefono[i].setIcon(MarcadorBusTel);
         }
         for (i = 0; i < datosBancos.features.length; i++) {
             if(i == this.options.idNamePolygon){
@@ -136,7 +136,7 @@
     var i;
     for (i = 0; i < datosBusesTelefono.features.length; i++) {
       puntosBusesTelefono[i] = new L.marker([datosBusesTelefono.features[i].geometry.coordinates[1], datosBusesTelefono.features[i].geometry.coordinates[0]], {
-        idRestaurante: i,
+        idBusTel: i,
         icon: MarcadorBusTel
       }).addTo(restaurantesPractica).bindPopup(datosBusesTelefono.features[i].properties.Name).on('click', setEtiquetaBusesTelefono);
     };
@@ -148,7 +148,7 @@
         }
         for (i = 0; i < datosBusesTelefono.features.length; i++) {
             if(i == this.options.idRestaurante){
-                puntosBusesTelefono[this.options.idRestaurante].setIcon(MarcadorBusTelActivo);  
+                puntosBusesTelefono[this.options.idBusTel].setIcon(MarcadorBusTelActivo);  
             }else{
                 puntosBusesTelefono[i].setIcon(MarcadorBusTel);
             }
@@ -174,7 +174,7 @@
     function reset(e){
       var i;
        for (i = 0; i < datosBusesTelefono.features.length; i++) {
-          puntosdatosBusesTelefono[i].setIcon(MarcadorBusTel);
+          puntosBusesTelefono[i].setIcon(MarcadorBusTel);
         }
         for (i = 0; i < datosBancos.features.length; i++) {
           polygonBancos[i].setStyle({color:'red'});
