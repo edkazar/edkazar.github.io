@@ -137,7 +137,7 @@
     for (i = 0; i < datosBusesTelefono.features.length; i++) {
       puntosBusesTelefono[i] = new L.marker([datosBusesTelefono.features[i].geometry.coordinates[1], datosBusesTelefono.features[i].geometry.coordinates[0]], {
         idRestaurante: i,
-        icon: MarcadorRest
+        icon: MarcadorBusTel
       }).addTo(restaurantesPractica).bindPopup(datosBusesTelefono.features[i].properties.Name).on('click', setEtiquetaBusesTelefono);
     };
 
