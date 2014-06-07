@@ -74,33 +74,33 @@
     xhr.send(null);
     var datosBancos = JSON.parse(xhr.responseText);
 
-    var polygon = [];
+    var polygonBancos = [];
     var i;
     for (i = 0; i < datosBancos.features.length; i++) {
-        var polygonData = new Array(datosBancos.features[i].geometry.coordinates[0].length);
+        var polygonDataBancos = new Array(datosBancos.features[i].geometry.coordinates[0].length);
         var j;
         for (j = 0; j < datosBancos.features[i].geometry.coordinates[0].length; j++) {
-            polygonData[j] = new Array(2);
-            polygonData[j][0] = datosBancos.features[i].geometry.coordinates[0][j][1];
-            polygonData[j][1] = datosBancos.features[i].geometry.coordinates[0][j][0];
+            polygonDataBancos[j] = new Array(2);
+            polygonDataBancos[j][0] = datosBancos.features[i].geometry.coordinates[0][j][1];
+            polygonDataBancos[j][1] = datosBancos.features[i].geometry.coordinates[0][j][0];
         }
         
-        polygon[i] = new L.polygon(polygonData, {color: 'red',idNamePolygon: i });
-        polygon[i].addTo(Bancos);
-        polygon[i].bindPopup(datosBancos.features[i].properties.Name);
-        polygon[i].on('click', setColorBancos);
+        polygonBancos[i] = new L.polygon(polygonDataBancos, {color: 'red',idNamePolygon: i });
+        polygonBancos[i].addTo(Bancos);
+        polygonBancos[i].bindPopup(datosBancos.features[i].properties.Name);
+        polygonBancos[i].on('click', setColorBancos);
     };
 
     function setColorBancos(e) {
         var i;
         for (i = 0; i < datosBufferRios.features.length; i++) {
-          polygon[i].setStyle({color: 'blue'});
+          polygonBufferRios[i].setStyle({color: 'blue'});
         }
         for (i = 0; i < datosBancos.features.length; i++) {
             if(i == this.options.idNamePolygon){
-                polygon[this.options.idNamePolygon].setStyle({color: 'green'});
+                polygonBancos[this.options.idNamePolygon].setStyle({color: 'green'});
             }else{
-                polygon[i].setStyle({color:'red'});
+                polygonBancos[i].setStyle({color:'red'});
             }
         }
     }
@@ -110,18 +110,18 @@
     xhr.send(null);
     var datosBufferRios = JSON.parse(xhr.responseText);
 
-    var polygon = [];
+    var polygonBufferRios = [];
     var i;
     for (i = 0; i < datosBufferRios.features.length; i++) {
-        var polygonData = new Array(datosBufferRios.features[i].geometry.coordinates[0].length);
+        var polygonDataBufferRios = new Array(datosBufferRios.features[i].geometry.coordinates[0].length);
         var j;
         for (j = 0; j < datosBufferRios.features[i].geometry.coordinates[0].length; j++) {
-            polygonData[j] = new Array(2);
-            polygonData[j][0] = datosBufferRios.features[i].geometry.coordinates[0][j][1];
-            polygonData[j][1] = datosBufferRios.features[i].geometry.coordinates[0][j][0];
+            polygonDataBufferRios[j] = new Array(2);
+            polygonDataBufferRios[j][0] = datosBufferRios.features[i].geometry.coordinates[0][j][1];
+            polygonDataBufferRios[j][1] = datosBufferRios.features[i].geometry.coordinates[0][j][0];
         }    
-        polygon[i] = new L.polygon(polygonData, {color: 'blue',idNamePolygon: i });
-        polygon[i].addTo(BufferRios);
+        polygonBufferRios[i] = new L.polygon(polygonDataBufferRios, {color: 'blue',idNamePolygon: i });
+        polygonBufferRios[i].addTo(BufferRios);
     };
 
    // function setColorBufferRios(e) {
