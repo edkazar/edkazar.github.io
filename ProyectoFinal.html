@@ -93,9 +93,9 @@
 
     function setColorBancos(e) {
         var i;
-       // for (i = 0; i < datosBufferRios.features.length; i++) {
-        //  polygon[i].setStyle({color: 'blue'});
-       // }
+        for (i = 0; i < datosBufferRios.features.length; i++) {
+          polygon[i].setStyle({color: 'blue'});
+        }
         for (i = 0; i < datosBancos.features.length; i++) {
             if(i == this.options.idNamePolygon){
                 polygon[this.options.idNamePolygon].setStyle({color: 'green'});
@@ -138,7 +138,7 @@
   //      }
  //   }
 
-    var map = L.map('map', {center: [9.93404,-84.07956], zoom: 17, layers: [Bancos, BufferRios]});
+    var map = L.map('map', {center: [9.939801038699763,-84.051852822303772], zoom: 17, layers: [Bancos, BufferRios]});
     
     // add an OpenStreetMap tile layer
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
@@ -155,9 +155,9 @@
 
     function reset(e){
       var i;
-       // for (i = 0; i < datosBufferRios.features.length; i++) {
-       //     linesRios[i].setStyle({color:'blue'});
-       // }
+       for (i = 0; i < datosBufferRios.features.length; i++) {
+            linesRios[i].setStyle({color:'blue'});
+        }
         for (i = 0; i < datosBancos.features.length; i++) {
           polygon[i].setStyle({color:'red'});
         }
