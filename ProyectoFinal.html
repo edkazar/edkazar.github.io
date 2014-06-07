@@ -124,26 +124,26 @@
         polygonBufferRios[i].addTo(BufferRios);
     };
 
-    var BufferCalles = new L.LayerGroup();
-    xhr.open("GET","BufferCalles.geojson",false);
+    var BufferCaminos = new L.LayerGroup();
+    xhr.open("GET","BufferCaminos.geojson",false);
     xhr.send(null);
-    var datosBufferCalles = JSON.parse(xhr.responseText);
+    var datosBufferCaminos = JSON.parse(xhr.responseText);
 
-    var polygonBufferCalles = [];
+    var polygonBufferCaminos = [];
     var i;
-    for (i = 0; i < datosBufferCalles.features.length; i++) {
-        var polygonDataBufferCalles = new Array(datosBufferCalles.features[i].geometry.coordinates[0].length);
+    for (i = 0; i < datosBufferCaminos.features.length; i++) {
+        var polygonDataBufferCaminos = new Array(datosBufferCaminos.features[i].geometry.coordinates[0].length);
         var j;
-        for (j = 0; j < datosBufferCalles.features[i].geometry.coordinates[0].length; j++) {
-            polygonDataBufferCalles[j] = new Array(2);
-            polygonDataBufferCalles[j][0] = datosBufferCalles.features[i].geometry.coordinates[0][j][1];
-            polygonDataBufferCalles[j][1] = datosBufferCalles.features[i].geometry.coordinates[0][j][0];
+        for (j = 0; j < datosBufferCaminos.features[i].geometry.coordinates[0].length; j++) {
+            polygonDataBufferCaminos[j] = new Array(2);
+            polygonDataBufferCaminos[j][0] = datosBufferCaminos.features[i].geometry.coordinates[0][j][1];
+            polygonDataBufferCaminos[j][1] = datosBufferCaminos.features[i].geometry.coordinates[0][j][0];
         }    
-        polygonBufferCalles[i] = new L.polygon(polygonDataBufferCalles, {color: '#000',idNamePolygon: i });
-        polygonBufferCalles[i].addTo(BufferCalles);
+        polygonBufferCaminos[i] = new L.polygon(polygonDataBufferCaminos, {color: '#000',idNamePolygon: i });
+        polygonBufferCaminos[i].addTo(BufferCaminos);
     };
 
-    var map = L.map('map', {center: [9.939801038699763,-84.051852822303772], zoom: 17, layers: [Bancos, BufferRios, BufferCalles]});
+    var map = L.map('map', {center: [9.939801038699763,-84.051852822303772], zoom: 17, layers: [Bancos, BufferRios, BufferCaminos]});
     
     // add an OpenStreetMap tile layer
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
@@ -152,7 +152,7 @@
     var groupedOverlays = {
       "Bancos": Bancos,
       "BufferRios": BufferRios,
-      "BufferCalles": BufferCalles
+      "BufferCaminos": BufferCaminos
     };
     
     L.control.layers(null, groupedOverlays).addTo(map);
