@@ -105,26 +105,24 @@
         }
     }
 
-   //var BufferRios = new L.LayerGroup();
-  //  xhr.open("GET","BufferRios.geojson",false);
-   // xhr.send(null);
-   // var datosBufferRios = JSON.parse(xhr.responseText);
+    var BufferRios = new L.LayerGroup();
+    xhr.open("GET","BufferRios.geojson",false);
+    xhr.send(null);
+    var datosBufferRios = JSON.parse(xhr.responseText);
 
-   // var polygon = [];
-  //  var i;
-   // for (i = 0; i < datosBufferRios.features.length; i++) {
-      //  var polygonData = new Array(datosBufferRios.features[i].geometry.coordinates[0].length);
-      //  var j;
-     //   for (j = 0; j < datosBufferRios.features[i].geometry.coordinates[0].length; j++) {
-     //       polygonData[j] = new Array(2);
-     //       polygonData[j][0] = datosBufferRios.features[i].geometry.coordinates[0][j][1];
-     //       polygonData[j][1] = datosBufferRios.features[i].geometry.coordinates[0][j][0];
-    //    }    
-    //    polygon[i] = new L.polygon(polygonData, {color: 'blue',idNamePolygon: i });
-   //     polygon[i].addTo(BufferRios);
-   //     polygon[i].bindPopup(datosBancos.features[i].properties.cat);
-   //     polygon[i].on('click', setColorBufferRios);
-  //  };
+    var polygon = [];
+    var i;
+    for (i = 0; i < datosBufferRios.features.length; i++) {
+        var polygonData = new Array(datosBufferRios.features[i].geometry.coordinates[0].length);
+        var j;
+        for (j = 0; j < datosBufferRios.features[i].geometry.coordinates[0].length; j++) {
+            polygonData[j] = new Array(2);
+            polygonData[j][0] = datosBufferRios.features[i].geometry.coordinates[0][j][1];
+            polygonData[j][1] = datosBufferRios.features[i].geometry.coordinates[0][j][0];
+        }    
+        polygon[i] = new L.polygon(polygonData, {color: 'blue',idNamePolygon: i });
+        polygon[i].addTo(BufferRios);
+    };
 
    // function setColorBufferRios(e) {
    //     var i;
@@ -140,7 +138,7 @@
   //      }
  //   }
 
-    var map = L.map('map', {center: [9.93404,-84.07956], zoom: 17, layers: [Bancos]});
+    var map = L.map('map', {center: [9.93404,-84.07956], zoom: 17, layers: [Bancos, BufferRios]});
     
     // add an OpenStreetMap tile layer
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
@@ -148,6 +146,7 @@
     // Overlay layers are grouped 11 max
     var groupedOverlays = {
       "Bancos": Bancos
+      "BufferRios": BufferRios
     };
     
     L.control.layers(null, groupedOverlays).addTo(map);
@@ -156,9 +155,9 @@
 
     function reset(e){
       var i;
-        for (i = 0; i < datosBufferRios.features.length; i++) {
-            linesRios[i].setStyle({color:'blue'});
-        }
+       // for (i = 0; i < datosBufferRios.features.length; i++) {
+       //     linesRios[i].setStyle({color:'blue'});
+       // }
         for (i = 0; i < datosBancos.features.length; i++) {
           polygon[i].setStyle({color:'red'});
         }
