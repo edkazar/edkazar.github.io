@@ -64,8 +64,8 @@
 
   <script type="text/javascript">
 
-    var MarcadorRest = L.AwesomeMarkers.icon({icon: "tags",color: "blue",iconColor: "black"});
-    var MarcadorActivo = L.AwesomeMarkers.icon({icon: "food",color: "green",iconColor: "black"});
+    var MarcadorBusTel = L.AwesomeMarkers.icon({icon: "tags",color: "blue",iconColor: "black"});
+    var MarcadorBusTelActivo = L.AwesomeMarkers.icon({icon: "food",color: "green",iconColor: "black"});
 
     var xhr = new XMLHttpRequest();
 
@@ -96,6 +96,9 @@
         //for (i = 0; i < datosBufferRios.features.length; i++) {
         //  polygonBufferRios[i].setStyle({color: 'blue'});
        // }
+        for (i = 0; i < datosBusesTelefono.features.length; i++) {
+          puntosdatosBusesTelefono[i].setIcon(MarcadorBusTel);
+        }
         for (i = 0; i < datosBancos.features.length; i++) {
             if(i == this.options.idNamePolygon){
                 polygonBancos[this.options.idNamePolygon].setStyle({color: 'green'});
@@ -124,26 +127,35 @@
         polygonBufferRios[i].addTo(BufferRios);
     };
 
-    var BufferCaminos = new L.LayerGroup();
-    xhr.open("GET","BufferCaminos.geojson",false);
+    var BusesTelefono = new L.LayerGroup();
+    xhr.open("GET","BusesYTelefonos.geojson",false);
     xhr.send(null);
-    var datosBufferCaminos = JSON.parse(xhr.responseText);
+    var datosBusesTelefono = JSON.parse(xhr.responseText);
 
-    var polygonBufferCaminos = [];
+    var puntosBusesTelefono = [];
     var i;
-    for (i = 0; i < datosBufferCaminos.features.length; i++) {
-        var polygonDataBufferCaminos = new Array(datosBufferCaminos.features[i].geometry.coordinates[0].length);
-        var j;
-        for (j = 0; j < datosBufferCaminos.features[i].geometry.coordinates[0].length; j++) {
-            polygonDataBufferCaminos[j] = new Array(2);
-            polygonDataBufferCaminos[j][0] = datosBufferCaminos.features[i].geometry.coordinates[0][j][1];
-            polygonDataBufferCaminos[j][1] = datosBufferCaminos.features[i].geometry.coordinates[0][j][0];
-        }    
-        polygonBufferCaminos[i] = new L.polygon(polygonDataBufferCaminos, {color: '#000',idNamePolygon: i });
-        polygonBufferCaminos[i].addTo(BufferCaminos);
+    for (i = 0; i < datosBusesTelefono.features.length; i++) {
+      puntosBusesTelefono[i] = new L.marker([datosBusesTelefono.features[i].geometry.coordinates[1], datosBusesTelefono.features[i].geometry.coordinates[0]], {
+        idRestaurante: i,
+        icon: MarcadorRest
+      }).addTo(restaurantesPractica).bindPopup(datosBusesTelefono.features[i].properties.Nombre).on('click', setEtiquetaBusesTelefono);
     };
 
-    var map = L.map('map', {center: [9.939801038699763,-84.051852822303772], zoom: 17, layers: [Bancos, BufferRios, BufferCaminos]});
+    function setEtiquetaBusesTelefono(e) {
+        var i;
+        for (i = 0; i < datosBancos.features.length; i++) {
+          polygonBancos[i].setStyle({color: 'red'});
+        }
+        for (i = 0; i < datosBusesTelefono.features.length; i++) {
+            if(i == this.options.idRestaurante){
+                puntosBusesTelefono[this.options.idRestaurante].setIcon(MarcadorBusTelActivo);  
+            }else{
+                puntosBusesTelefono[i].setIcon(MarcadorBusTel);
+            }
+        }
+    }
+
+    var map = L.map('map', {center: [9.939801038699763,-84.051852822303772], zoom: 17, layers: [Bancos, BufferRios, BusesTelefono]});
     
     // add an OpenStreetMap tile layer
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
@@ -152,7 +164,7 @@
     var groupedOverlays = {
       "Bancos": Bancos,
       "BufferRios": BufferRios,
-      "BufferCaminos": BufferCaminos
+      "BusesYTelef": BusesTelefono
     };
     
     L.control.layers(null, groupedOverlays).addTo(map);
@@ -161,11 +173,11 @@
 
     function reset(e){
       var i;
-      // for (i = 0; i < datosBufferRios.features.length; i++) {
-      //      linesRios[i].setStyle({color:'blue'});
-      //  }
+       for (i = 0; i < datosBusesTelefono.features.length; i++) {
+          puntosdatosBusesTelefono[i].setIcon(MarcadorBusTel);
+        }
         for (i = 0; i < datosBancos.features.length; i++) {
-          polygon[i].setStyle({color:'red'});
+          polygonBancos[i].setStyle({color:'red'});
         }
     }
 
