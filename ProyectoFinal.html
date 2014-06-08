@@ -66,15 +66,11 @@
 
 		function highlightFeature(e) {
     			var layer = e.target;
-			layer.setStyle({
-       	 			weight: 5,
-        			color: '#666',
-        			dashArray: '',
-        			fillOpacity: 0.7
-    			});
+			layer.setStyle(styleSelected);
 		}
 		function resetHighlight(e) {
-    			geojson.resetStyle(e.target);
+			var layer= e.target;
+    			layer.setStyle(styleThiessen);
 		}
 		/*
 		Variables de estilo
@@ -139,6 +135,11 @@
 			color: "green",
 			iconColor: "black"
 		});
+		var styleSelected= {
+			"color": "#666666",
+			"weight": 3,
+			"opacity": 1.65,
+		};
 		var styleThiessen= {
 			"color": "#009966",
 			"weight": 4,
